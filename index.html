@@ -1,383 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AI Lab Practical Codes</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&family=Ubuntu:wght@500&display=swap">
-<style>
-:root{--bg:#f7f8fa;--fg:#1c2330;--muted:#5b6575;--card:#ffffff;--line:#d9dee6;--code-bg:#10151f;--code-fg:#e6ebf3;--accent:#1f5fd6;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e121a;--fg:#e6ebf3;--muted:#9aa5b8;--card:#161c28;--line:#2a3345;--code-bg:#0a0d14;--code-fg:#e6ebf3;--accent:#7aa5ff}}
-:root[data-theme="dark"]{--bg:#0e121a;--fg:#e6ebf3;--muted:#9aa5b8;--card:#161c28;--line:#2a3345;--code-bg:#0a0d14;--code-fg:#e6ebf3;--accent:#7aa5ff}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
-h1{font-size:1.7rem;margin:0 0 4px}
-.sub{color:var(--muted);margin:0 0 24px}
-section{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 24px;overflow:hidden}
-.head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
-h2{font-size:1.1rem;margin:0}
-button{font:inherit;font-size:.85rem;padding:4px 12px;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:6px;cursor:pointer}
-button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-pre{margin:0;padding:16px;background:var(--code-bg);color:var(--code-fg);overflow-x:auto;font:13.5px/1.55 Consolas,"Courier New",monospace;tab-size:4}
-/* Ubuntu terminal look */
-body{background:#2c001e;color:#eeeeec;font-family:"Ubuntu Mono","DejaVu Sans Mono",Consolas,monospace}
-h1{font-family:"Ubuntu","Segoe UI",sans-serif;font-weight:500;color:#eeeeec}
-.sub{color:#ad7fa8;font-size:1rem}
-section{background:#300a24;border:1px solid #1a0014;border-radius:9px 9px 4px 4px;box-shadow:0 10px 28px rgba(0,0,0,.55)}
-.head{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:7px 12px;background:linear-gradient(#4b4a46,#3c3b37);border-bottom:1px solid #1d1d1d}
-h2{font-family:"Ubuntu","Segoe UI",sans-serif;font-weight:500;font-size:.88rem;text-align:center;color:#dfdbd2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-button{font-family:"Ubuntu","Segoe UI",sans-serif;font-size:.78rem;color:#dfdbd2;border:1px solid #77767b;background:rgba(255,255,255,.06);padding:3px 10px}
-button:hover{background:rgba(255,255,255,.16)}
-button:focus-visible{outline:2px solid #e95420}
-.dots{display:flex;gap:8px}
-.dots span{width:14px;height:14px;border-radius:50%;background:#5e5c64}
-.dots span:last-child{background:#e95420}
-.prompt{padding:12px 16px 0;font:15px/1.5 "Ubuntu Mono","DejaVu Sans Mono",Consolas,monospace;color:#eeeeec;overflow-x:auto;white-space:nowrap}
-.prompt.end{padding:0 16px 14px}
-.u{color:#8ae234;font-weight:700}
-.p{color:#729fcf;font-weight:700}
-.cur{display:inline-block;width:.6em;height:1.1em;background:#eeeeec;vertical-align:text-bottom}
-pre{background:transparent;color:#eeeeec;font:15px/1.5 "Ubuntu Mono","DejaVu Sans Mono",Consolas,monospace;padding:6px 16px 10px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vrushank Ahire | DevOps &amp; Cloud Portfolio</title>
+  <meta name="description" content="Portfolio of Vrushank Ahire: CI/CD pipelines, Docker, Jenkins and AWS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F1F4F8;
+      --panel: #FFFFFF;
+      --ink: #14213D;
+      --mute: #4B5A74;
+      --line: #CBD5E3;
+      --accent: #2F5BEA;
+      --ok: #0E8F7E;
+      --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+      --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: var(--body); line-height: 1.65; font-size: 1.05rem;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
+
+    header.top { padding: 1.4rem 0; }
+    header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .brand { font-family: var(--display); font-weight: 700; text-decoration: none; color: var(--ink); }
+    nav a { margin-left: 1.4rem; color: var(--mute); text-decoration: none; font-weight: 500; }
+    nav a:hover { color: var(--accent); }
+
+    .hero { padding: 4.5rem 0 5rem; }
+    h1 {
+      font-family: var(--display); font-weight: 700; margin: 0;
+      font-size: clamp(2.8rem, 9vw, 6rem); line-height: 1; letter-spacing: -0.035em;
+    }
+    .lead { max-width: 36rem; margin: 1.6rem 0 0; font-size: 1.25rem; color: var(--mute); }
+
+    /* The pipeline: one animation on load, ends on the live build number */
+    .pipe { display: grid; grid-template-columns: repeat(6, 1fr); list-style: none; margin: 3.5rem 0 0; padding: 0; }
+    .pipe li { position: relative; padding-top: 2rem; font-size: .92rem; font-weight: 500; color: var(--mute); }
+    .pipe li small { display: block; font-weight: 400; font-size: .82rem; }
+    .pipe li::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 16px; height: 16px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--line);
+      animation: node .35s forwards; animation-delay: calc(var(--i) * .5s + .4s);
+    }
+    .pipe li:not(:last-child)::after {
+      content: ""; position: absolute; top: 7px; left: 22px; right: 6px; height: 2px; background: var(--line);
+      animation: link .35s forwards; animation-delay: calc(var(--i) * .5s + .6s);
+    }
+    .pipe li:last-child::before { animation-name: nodeok; }
+    .pipe li:last-child { color: var(--ink); }
+    @keyframes node   { to { background: var(--accent); border-color: var(--accent); } }
+    @keyframes nodeok { to { background: var(--ok); border-color: var(--ok); box-shadow: 0 0 0 6px rgba(14,143,126,.18); } }
+    @keyframes link   { to { background: var(--accent); } }
+
+    section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+    .row { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem 3rem; }
+    h2 { font-family: var(--display); font-size: 1.5rem; margin: 0; letter-spacing: -0.01em; }
+    p { margin: 0 0 1rem; max-width: 40rem; }
+
+    .skills { margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem 2rem; }
+    .skills dt { font-weight: 500; margin-bottom: .2rem; }
+    .skills dd { margin: 0; color: var(--mute); }
+
+    .project { padding: 0 0 2rem; margin: 0 0 2rem; border-bottom: 1px solid var(--line); }
+    .project:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+    .project h3 { font-family: var(--display); font-size: 1.3rem; margin: 0 0 .5rem; }
+    .tags { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 1rem 0 0; }
+    .tags li { font-size: .85rem; padding: .15rem .7rem; border: 1px solid var(--line); border-radius: 99px; background: var(--panel); color: var(--mute); }
+
+    .contact-list { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; align-items: center; margin-top: 1.2rem; }
+    button.copy {
+      font: inherit; font-weight: 500; cursor: pointer; padding: .6rem 1.2rem; border-radius: 8px;
+      border: 2px solid var(--accent); background: var(--accent); color: #fff;
+    }
+    button.copy:hover { background: #2349c4; border-color: #2349c4; }
+
+    footer { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--mute); font-size: .92rem; }
+
+    @media (max-width: 720px) {
+      .row { grid-template-columns: 1fr; }
+      .skills { grid-template-columns: 1fr; }
+      nav a { margin: 0 1rem 0 0; }
+      .pipe { grid-template-columns: 1fr; gap: 1.1rem; }
+      .pipe li { padding: 0 0 0 2rem; }
+      .pipe li::before { top: .3rem; }
+      .pipe li:not(:last-child)::after { top: 1.5rem; bottom: -1.5rem; left: 7px; right: auto; width: 2px; height: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pipe li::before, .pipe li::after { animation: none; }
+      .pipe li::before { background: var(--accent); border-color: var(--accent); }
+      .pipe li:last-child::before { background: var(--ok); border-color: var(--ok); }
+      .pipe li:not(:last-child)::after { background: var(--accent); }
+      html { scroll-behavior: auto; }
+    }
+  </style>
 </head>
 <body>
-<main>
-<h1>AI Lab Practical Codes</h1>
-<p class="sub">Artificial Intelligence Laboratory (PCC-304-CSC). All 8 practicals in Python 3.</p>
-<div id="list"></div>
-</main>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#top">Vrushank Ahire</a>
+      <nav aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<script type="text/plain" data-title="Practical no 1: Simple Reflex Agent for Vacuum Cleaner World">
-# Simple Reflex Agent for Vacuum Cleaner World
-def vacuum_agent(location, status):
-    if status == "Dirty":
-        return "Suck"
-    elif location == "A":
-        return "Move Right"
-    else:
-        return "Move Left"
+  <main id="top">
+    <div class="wrap hero">
+      <h1>Vrushank Ahire</h1>
+      <p class="lead">I build and automate the path from a git push to a running application.</p>
 
-# User input
-location = input("Enter current location (A/B): ")
-status = input("Enter status (Clean/Dirty): ")
+      <ol class="pipe" aria-label="Deployment pipeline for this page">
+        <li style="--i:0">Push<small>GitHub</small></li>
+        <li style="--i:1">Build<small>Jenkins</small></li>
+        <li style="--i:2">Test<small>Jenkins</small></li>
+        <li style="--i:3">Image<small>Docker</small></li>
+        <li style="--i:4">Deploy<small>AWS EC2</small></li>
+        <li style="--i:5">Live<small id="build">checking build</small></li>
+      </ol>
+    </div>
 
-# Agent action
-action = vacuum_agent(location, status)
-print("Agent Action:", action)
-</script>
+    <div class="wrap">
+      <section id="about" class="row">
+        <h2>About</h2>
+        <div>
+          <!-- TODO: replace with your own story -->
+          <p>I am a developer focused on DevOps and cloud infrastructure. I like removing manual steps: when code changes, tests run, an image is built and the new version goes live without anyone logging in to a server.</p>
+          <p>This page is deployed by the pipeline shown above. The number under "Live" is the Jenkins build that is serving you right now.</p>
+        </div>
+      </section>
 
-<script type="text/plain" data-title="Practical no 2: Model-Based Agent (Grid Navigation)">
-# Model-Based Agent - Grid Navigation (simple version)
+      <section id="skills" class="row">
+        <h2>Skills</h2>
+        <dl class="skills">
+          <div><dt>CI/CD</dt><dd>Jenkins pipelines, Jenkinsfile (Groovy), GitHub webhooks</dd></div>
+          <div><dt>Containers</dt><dd>Docker, Dockerfiles, nginx</dd></div>
+          <div><dt>Cloud</dt><dd>AWS EC2, security groups, IAM, AWS CLI</dd></div>
+          <div><dt>Foundations</dt><dd>Linux (Ubuntu), Bash, Git, SSH, HTML/CSS/JS</dd></div>
+        </dl>
+      </section>
 
-grid = [
-    [0, 0, 0, 0],
-    [1, 1, 0, 1],
-    [0, 0, 0, 0],
-    [0, 1, 1, 0]
-]
+      <section id="projects" class="row">
+        <h2>Projects</h2>
+        <div>
+          <article class="project">
+            <h3>Automated CI/CD pipeline on AWS</h3>
+            <p>A push to GitHub triggers Jenkins through a webhook. Jenkins validates the code, builds a Docker image, sends it over SSH to a second EC2 server and replaces the running container, then checks that the new build is live.</p>
+            <ul class="tags"><li>GitHub</li><li>Jenkins</li><li>Docker</li><li>AWS EC2</li><li>SSH</li></ul>
+            <!-- TODO: replace YOUR_GITHUB_USERNAME -->
+            <p style="margin-top:1rem"><a href="https://github.com/YOUR_GITHUB_USERNAME/cicd-jenkins-docker-ec2">View the repository</a></p>
+          </article>
+          <article class="project">
+            <h3>This portfolio</h3>
+            <p>A single HTML file served by nginx in a container. Every change I push is built and deployed by the pipeline above.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>nginx</li></ul>
+          </article>
+        </div>
+      </section>
 
-start = (0, 0)
-goal = (3, 3)
-visited = []              # agent's memory (internal model)
+      <section id="contact" class="row">
+        <h2>Contact</h2>
+        <div>
+          <p>Open to internships, junior DevOps roles and interesting projects.</p>
+          <div class="contact-list">
+            <!-- TODO: replace with your real email and profile links -->
+            <button class="copy" id="copy" type="button" data-email="you@example.com">Copy email address</button>
+            <a href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
+            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN">LinkedIn</a>
+          </div>
+          <p id="copied" role="status" style="margin-top:.8rem;color:var(--ok)"></p>
+        </div>
+      </section>
+    </div>
+  </main>
 
-def is_valid(x, y):
-    if x < 0 or x >= 4 or y < 0 or y >= 4:
-        return False      # outside the grid
-    if grid[x][y] == 1:
-        return False      # obstacle
-    if (x, y) in visited:
-        return False      # already visited
-    return True
+  <footer>
+    <div class="wrap">Deployed by Jenkins, <span id="foot-build">build unknown</span>. &copy; <span id="year"></span> Vrushank Ahire</div>
+  </footer>
 
-current = start
-path = [current]
-visited.append(current)
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-while current != goal:
-    x, y = current
-    moves = [(x + 1, y), (x, y + 1), (x, y - 1), (x - 1, y)]   # Down, Right, Left, Up
-    moved = False
+    // Show which Jenkins build is live (version.txt is written by the Dockerfile)
+    fetch('version.txt', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.text() : 'local'; })
+      .then(function (t) {
+        t = t.trim();
+        var label = /^\d+$/.test(t) ? 'build #' + t : 'local preview';
+        document.getElementById('build').textContent = label;
+        document.getElementById('foot-build').textContent = label;
+      })
+      .catch(function () {
+        document.getElementById('build').textContent = 'local preview';
+        document.getElementById('foot-build').textContent = 'local preview';
+      });
 
-    for nx, ny in moves:
-        if is_valid(nx, ny):
-            current = (nx, ny)
-            visited.append(current)
-            path.append(current)
-            moved = True
-            break
-
-    if not moved:
-        print("No valid path found.")
-        break
-
-if current == goal:
-    print("Goal Reached!")
-    print("Path:", path)
-</script>
-
-<script type="text/plain" data-title="Practical no 3: A* Search Algorithm">
-import heapq
-
-def a_star(graph, start, goal, heuristic):
-    open_list = []                         # priority queue
-    heapq.heappush(open_list, (0, start))
-    g_cost = {start: 0}                    # cost from start to each node
-    parent = {start: None}                 # to rebuild the path
-
-    while open_list:
-        _, current = heapq.heappop(open_list)   # lowest f-cost
-
-        if current == goal:                # goal reached: rebuild path
-            path = []
-            while current is not None:
-                path.append(current)
-                current = parent[current]
-            return path[::-1]              # reverse
-
-        for neighbor, cost in graph[current]:
-            new_cost = g_cost[current] + cost
-            if neighbor not in g_cost or new_cost < g_cost[neighbor]:
-                g_cost[neighbor] = new_cost
-                f_cost = new_cost + heuristic[neighbor]   # f = g + h
-                heapq.heappush(open_list, (f_cost, neighbor))
-                parent[neighbor] = current
-    return None                            # no path
-
-graph = {
-    'A': [('B', 1), ('C', 3)],
-    'B': [('D', 3), ('E', 6)],
-    'C': [('F', 2)],
-    'D': [('G', 1)],
-    'E': [('G', 2)],
-    'F': [('G', 1)],
-    'G': []
-}
-
-heuristic = {'A': 5, 'B': 4, 'C': 3, 'D': 1, 'E': 2, 'F': 1, 'G': 0}
-
-path = a_star(graph, 'A', 'G', heuristic)
-print("Shortest Path:", path)
-</script>
-
-<script type="text/plain" data-title="Practical no 4: Alpha-Beta Pruning">
-import math
-
-def alpha_beta(depth, node_index, maximizing_player, values, alpha, beta):
-    # Leaf node
-    if depth == 3:
-        return values[node_index]
-
-    if maximizing_player:
-        best = -math.inf
-        for i in range(2):
-            value = alpha_beta(depth + 1, node_index * 2 + i,
-                               False, values, alpha, beta)
-            best = max(best, value)
-            alpha = max(alpha, best)
-            if beta <= alpha:       # prune
-                break
-        return best
-    else:
-        best = math.inf
-        for i in range(2):
-            value = alpha_beta(depth + 1, node_index * 2 + i,
-                               True, values, alpha, beta)
-            best = min(best, value)
-            beta = min(beta, best)
-            if beta <= alpha:       # prune
-                break
-        return best
-
-values = [3, 5, 6, 9, 1, 2, 0, -1]
-result = alpha_beta(0, 0, True, values, -math.inf, math.inf)
-print("Optimal Value:", result)
-</script>
-
-<script type="text/plain" data-title="Practical no 5: BFS to Solve the 8-Puzzle">
-from collections import deque
-
-goal = (1, 2, 3,
-        4, 5, 6,
-        7, 8, 0)
-
-moves = [(-1, 0), (1, 0), (0, -1), (0, 1)]   # up, down, left, right
-
-def get_neighbors(state):
-    neighbors = []
-    zero = state.index(0)            # position of the blank
-    x, y = divmod(zero, 3)           # row, column
-
-    for dx, dy in moves:
-        nx, ny = x + dx, y + dy
-        if 0 <= nx < 3 and 0 <= ny < 3:          # inside the board
-            new_pos = nx * 3 + ny
-            new_state = list(state)
-            new_state[zero], new_state[new_pos] = new_state[new_pos], new_state[zero]
-            neighbors.append(tuple(new_state))
-    return neighbors
-
-def bfs(start):
-    queue = deque([(start, [])])     # (state, path so far)
-    visited = {start}
-
-    while queue:
-        state, path = queue.popleft()
-
-        if state == goal:
-            return path + [state]
-
-        for neighbor in get_neighbors(state):
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append((neighbor, path + [state]))
-    return None
-
-start = (1, 2, 3,
-         4, 5, 6,
-         7, 0, 8)
-
-solution = bfs(start)
-
-if solution:
-    print("Solution found!")
-    for step in solution:
-        print(step)
-else:
-    print("No solution exists.")
-</script>
-
-<script type="text/plain" data-title="Practical no 6: 8-Queens using Backtracking (CSP)">
-N = 8
-queens = [-1] * N        # queens[row] = column of the queen in that row
-
-def is_safe(row, col):
-    for r in range(row):
-        if queens[r] == col:                       # same column
-            return False
-        if abs(queens[r] - col) == abs(r - row):   # same diagonal
-            return False
-    return True
-
-def solve(row):
-    if row == N:             # all queens placed
-        return True
-    for col in range(N):
-        if is_safe(row, col):
-            queens[row] = col        # place queen
-            if solve(row + 1):
-                return True
-            queens[row] = -1         # backtrack
-    return False
-
-def print_board():
-    for r in range(N):
-        print(" ".join("Q" if queens[r] == c else "." for c in range(N)))
-
-if solve(0):
-    print("Solution Found:\n")
-    print_board()
-else:
-    print("No Solution Exists")
-</script>
-
-<script type="text/plain" data-title="Practical no 7: Rule-Based Chatbot">
-def chatbot():
-    print("ChatBot: Hello! I am a simple chatbot.")
-    print("Type 'bye' to exit.\n")
-
-    while True:
-        user = input("You: ").lower().strip()
-
-        if user == "hello" or user == "hi":
-            print("ChatBot: Hello! How can I help you?")
-        elif "how are you" in user:
-            print("ChatBot: I'm doing well. Thank you for asking!")
-        elif "your name" in user:
-            print("ChatBot: I am a Rule-Based ChatBot.")
-        elif "course" in user:
-            print("ChatBot: This is an Artificial Intelligence laboratory.")
-        elif "python" in user:
-            print("ChatBot: Python is a popular programming language used in AI.")
-        elif "thank" in user:
-            print("ChatBot: You're welcome!")
-        elif user == "bye" or user == "exit":
-            print("ChatBot: Goodbye! Have a nice day.")
-            break
-        else:
-            print("ChatBot: Sorry, I don't understand that. Please try another question.")
-
-chatbot()
-</script>
-
-<script type="text/plain" data-title="Practical no 8: Intelligent Agent - Number Guessing (Binary Search)">
-def intelligent_agent():
-    print("Think of a number between 1 and 100.")
-    print("Respond with 'higher', 'lower', or 'correct'.")
-
-    low = 1
-    high = 100
-    attempts = 0
-
-    while low <= high:
-        guess = (low + high) // 2
-        attempts += 1
-        print(f"My guess is: {guess}")
-        feedback = input("Your response: ").lower().strip()
-
-        if feedback == "correct":
-            print(f"I guessed your number in {attempts} attempts!")
-            break
-        elif feedback == "higher":
-            low = guess + 1
-        elif feedback == "lower":
-            high = guess - 1
-        else:
-            print("Invalid input! Please enter higher, lower, or correct.")
-            attempts -= 1        # invalid reply should not count as a guess
-
-intelligent_agent()
-</script>
-
-<script>
-(function(){
-  var list = document.getElementById("list");
-  var blocks = document.querySelectorAll('script[type="text/plain"]');
-  blocks.forEach(function(b){
-    var code = b.textContent.replace(/^\n/, "").replace(/\s+$/, "") + "\n";
-    var sec = document.createElement("section");
-    var head = document.createElement("div"); head.className = "head";
-    var h = document.createElement("h2"); h.textContent = b.getAttribute("data-title");
-    var btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Copy code";
-    btn.addEventListener("click", function(){
-      function done(t){ btn.textContent = t; setTimeout(function(){ btn.textContent = "Copy code"; }, 1500); }
-      try {
-        navigator.clipboard.writeText(code).then(function(){ done("Copied"); }, function(){ fallback(); });
-      } catch (e) { fallback(); }
-      function fallback(){
-        try {
-          var ta = document.createElement("textarea"); ta.value = code;
-          document.body.appendChild(ta); ta.select(); document.execCommand("copy");
-          document.body.removeChild(ta); done("Copied");
-        } catch (e2) { done("Select and copy"); }
-      }
+    // Copy email to clipboard
+    var btn = document.getElementById('copy');
+    btn.addEventListener('click', function () {
+      var email = btn.dataset.email, note = document.getElementById('copied');
+      (navigator.clipboard ? navigator.clipboard.writeText(email) : Promise.reject())
+        .then(function () { note.textContent = 'Copied ' + email; })
+        .catch(function () { note.textContent = 'Copy failed. My email is ' + email; });
     });
-    var dots = document.createElement("div"); dots.className = "dots";
-    for (var i = 0; i < 3; i++) dots.appendChild(document.createElement("span"));
-    head.appendChild(btn); head.appendChild(h); head.appendChild(dots);
-    var num = b.getAttribute("data-title").match(/no (\d+)/)[1];
-    var ps = '<span class="u">student@ubuntu</span>:<span class="p">~/ai-lab</span>$ ';
-    var prompt = document.createElement("div"); prompt.className = "prompt";
-    prompt.innerHTML = ps + "cat practical_" + num + ".py";
-    var endp = document.createElement("div"); endp.className = "prompt end";
-    endp.innerHTML = ps + '<span class="cur"></span>';
-    var pre = document.createElement("pre"); var c = document.createElement("code");
-    c.textContent = code; pre.appendChild(c);
-    sec.appendChild(head); sec.appendChild(prompt); sec.appendChild(pre); sec.appendChild(endp);
-    list.appendChild(sec);
-  });
-})();
-</script>
+  </script>
 </body>
 </html>
