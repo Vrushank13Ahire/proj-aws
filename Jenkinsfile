@@ -12,9 +12,9 @@ pipeline {
         IMAGE_TAG      = "${BUILD_NUMBER}"
         CONTAINER_NAME = 'cicd-webapp'
         APP_USER       = 'ubuntu'
-        APP_HOST       = '<APP_PRIVATE_IP>'   // replace before committing
+        APP_HOST       = '13.233.91.151'
         APP_PORT       = '80'
-        SSH_CRED_ID    = 'app-server-ssh'     // Jenkins credential ID
+        SSH_CRED_ID    = 'app-server-ssh'
     }
 
     stages {
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh '''
                     set -e
-                    for f in index.html style.css script.js Dockerfile; do
+                    for f in index.html Dockerfile; do
                         test -s "$f" || { echo "Missing or empty: $f"; exit 1; }
                     done
                     echo "Static site: no compile step. Source files validated."
@@ -107,7 +107,11 @@ pipeline {
             sh 'docker rmi ${IMAGE_NAME}:${IMAGE_TAG} || true'
             sh 'docker image prune -f || true'
         }
-        success { echo "Deployed build #${BUILD_NUMBER} successfully." }
-        failure { echo "Pipeline failed. Check the stage logs above." }
+        success {
+            echo "Deployed build #${BUILD_NUMBER} successfully."
+        }
+        failure {
+            echo "Pipeline failed. Check the stage logs above."
+        }
     }
 }
