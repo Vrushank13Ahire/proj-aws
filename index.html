@@ -1,445 +1,118 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
 <title>Your Name – Portfolio</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&display=swap">
 <style>
-:root {
-  --bg: #f3f1ec;
-  --ink: #1d2433;
-  --muted: #5b6475;
-  --line: #d6d2c8;
-  --accent: #2b4acb;
-  --card: #fbfaf7;
-
-  box-sizing: border-box;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+:root{
+  --bg:#f3f1ec; --ink:#1d2433; --muted:#5b6475; --line:#d6d2c8; --accent:#2b4acb; --card:#fbfaf7;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #161a24;
-    --ink: #eceae4;
-    --muted: #9aa2b3;
-    --line: #2c3345;
-    --accent: #8ea2ff;
-    --card: #1d2230;
-  }
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#161a24;--ink:#eceae4;--muted:#9aa2b3;--line:#2c3345;--accent:#8ea2ff;--card:#1d2230}
 }
-
-:root[data-theme="dark"] {
-  --bg: #161a24;
-  --ink: #eceae4;
-  --muted: #9aa2b3;
-  --line: #2c3345;
-  --accent: #8ea2ff;
-  --card: #1d2230;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font: 17px/1.65 Georgia, "Times New Roman", serif;
-}
-
-a {
-  color: var(--accent);
-}
-
-:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-}
-
-.wrap {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-header.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 0;
-  font-family: system-ui, sans-serif;
-  font-size: 15px;
-}
-
-.nav nav a {
-  margin-left: 20px;
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.nav nav a:hover {
-  color: var(--ink);
-}
-
-button.theme {
-  font: inherit;
-  background: none;
-  border: 1px solid var(--line);
-  color: var(--ink);
-  padding: 4px 12px;
-  border-radius: 99px;
-  cursor: pointer;
-  margin-left: 20px;
-}
-
-.hero {
-  padding: 72px 0 56px;
-}
-
-.hero h1 {
-  font-size: clamp(2.6rem, 8vw, 5rem);
-  line-height: 1.02;
-  margin: 0 0 24px;
-  letter-spacing: -.02em;
-  font-weight: 700;
-}
-
-.hero p {
-  max-width: 34em;
-  color: var(--muted);
-  font-size: 1.15rem;
-  margin: 0 0 28px;
-}
-
-.cta {
-  display: inline-block;
-  font-family: system-ui, sans-serif;
-  background: var(--ink);
-  color: var(--bg);
-  padding: 12px 22px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-section {
-  padding: 48px 0;
-  border-top: 1px solid var(--line);
-}
-
-section h2 {
-  font: 600 1.1rem system-ui, sans-serif;
-  margin: 0 0 28px;
-  color: var(--muted);
-}
-
-.projects {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.project {
-  background: var(--card);
-  border: 1px solid var(--line);
-  padding: 22px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-}
-
-.project h3 {
-  margin: 0 0 8px;
-  font-size: 1.2rem;
-}
-
-.project p {
-  margin: 0 0 14px;
-  color: var(--muted);
-  font-size: .95rem;
-  flex: 1;
-}
-
-.tags {
-  font: 13px system-ui, sans-serif;
-  color: var(--muted);
-}
-
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  font-family: system-ui, sans-serif;
-  font-size: 15px;
-}
-
-.skills li {
-  border: 1px solid var(--line);
-  padding: 6px 14px;
-  border-radius: 99px;
-  background: var(--card);
-}
-
-form {
-  display: grid;
-  gap: 14px;
-  max-width: 520px;
-  font-family: system-ui, sans-serif;
-}
-
-label {
-  display: grid;
-  gap: 6px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-input,
-textarea {
-  font: inherit;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--card);
-  color: var(--ink);
-}
-
-form button {
-  justify-self: start;
-  font: 600 15px system-ui, sans-serif;
-  background: var(--accent);
-  color: #fff;
-  border: 0;
-  padding: 12px 22px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-#status {
-  min-height: 1.5em;
-  font-family: system-ui, sans-serif;
-  font-size: 14px;
-  color: var(--accent);
-}
-
-footer {
-  padding: 32px 0 48px;
-  color: var(--muted);
-  font: 14px system-ui, sans-serif;
-  border-top: 1px solid var(--line);
-}
-
-/* Jenkins CSS validation marker:
-   This page uses internal CSS through the style element. */
-
-@media (max-width: 600px) {
-  header.nav {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .nav nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .nav nav a,
-  button.theme {
-    margin-left: 0;
-  }
-
-  .hero {
-    padding: 48px 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
+:root[data-theme="dark"]{--bg:#161a24;--ink:#eceae4;--muted:#9aa2b3;--line:#2c3345;--accent:#8ea2ff;--card:#1d2230}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Georgia,"Times New Roman",serif}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+header.nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;font-family:system-ui,sans-serif;font-size:15px}
+.nav nav a{margin-left:20px;color:var(--muted);text-decoration:none}
+.nav nav a:hover{color:var(--ink)}
+button.theme{font:inherit;background:none;border:1px solid var(--line);color:var(--ink);padding:4px 12px;border-radius:99px;cursor:pointer;margin-left:20px}
+.hero{padding:72px 0 56px}
+.hero h1{font-family:Fraunces,Georgia,serif;font-size:clamp(2.6rem,8vw,5rem);line-height:1.02;margin:0 0 24px;letter-spacing:-.02em;font-weight:700}
+.hero p{max-width:34em;color:var(--muted);font-size:1.15rem;margin:0 0 28px}
+.cta{display:inline-block;font-family:system-ui,sans-serif;background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:6px;text-decoration:none;font-weight:600}
+section{padding:48px 0;border-top:1px solid var(--line)}
+section h2{font:600 1.1rem system-ui,sans-serif;margin:0 0 28px;color:var(--muted)}
+.projects{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.project{background:var(--card);border:1px solid var(--line);padding:22px;border-radius:8px;display:flex;flex-direction:column}
+.project h3{margin:0 0 8px;font-size:1.2rem}
+.project p{margin:0 0 14px;color:var(--muted);font-size:.95rem;flex:1}
+.tags{font:13px system-ui,sans-serif;color:var(--muted)}
+.skills{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none;font-family:system-ui,sans-serif;font-size:15px}
+.skills li{border:1px solid var(--line);padding:6px 14px;border-radius:99px;background:var(--card)}
+form{display:grid;gap:14px;max-width:520px;font-family:system-ui,sans-serif}
+label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+input,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+form button{justify-self:start;font:600 15px system-ui,sans-serif;background:var(--accent);color:#fff;border:0;padding:12px 22px;border-radius:6px;cursor:pointer}
+#status{min-height:1.5em;font-family:system-ui,sans-serif;font-size:14px;color:var(--accent)}
+footer{padding:32px 0 48px;color:var(--muted);font:14px system-ui,sans-serif;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
-
 <body>
-
 <div class="wrap">
-
   <header class="nav">
     <strong>Your Name</strong>
-
     <nav>
-      <a href="#work">Work</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-
-      <button class="theme" id="theme" type="button">
-        Dark mode
-      </button>
+      <a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <button class="theme" id="theme" type="button">Dark mode</button>
     </nav>
   </header>
 
   <main>
-
     <div class="hero">
       <h1>I design and build useful things for the web.</h1>
-
-      <p>
-        Hi, I'm Your Name, a web developer based in Pune.
-        I turn ideas into fast, accessible websites and apps.
-      </p>
-
+      <p>Hi, I’m Your Name, a web developer based in Pune. I turn ideas into fast, accessible websites and apps.</p>
       <a class="cta" href="#contact">Get in touch</a>
     </div>
 
     <section id="work">
-
       <h2>Selected work</h2>
-
       <div class="projects">
-
-        <article class="project">
-          <h3>Project One</h3>
-          <p>
-            A short description of what you built,
-            who it was for, and the result.
-          </p>
-          <div class="tags">HTML, CSS, JavaScript</div>
-        </article>
-
-        <article class="project">
-          <h3>Project Two</h3>
-          <p>
-            Describe the problem you solved
-            and your role in solving it.
-          </p>
-          <div class="tags">React, Node.js</div>
-        </article>
-
-        <article class="project">
-          <h3>Project Three</h3>
-          <p>
-            Mention a measurable outcome,
-            such as faster load times or more sign-ups.
-          </p>
-          <div class="tags">Python, Flask</div>
-        </article>
-
+        <article class="project"><h3>Project One</h3><p>A short description of what you built, who it was for, and the result.</p><div class="tags">HTML, CSS, JavaScript</div></article>
+        <article class="project"><h3>Project Two</h3><p>Describe the problem you solved and your role in solving it.</p><div class="tags">React, Node.js</div></article>
+        <article class="project"><h3>Project Three</h3><p>Mention a measurable outcome, such as faster load times or more sign-ups.</p><div class="tags">Python, Flask</div></article>
       </div>
     </section>
 
     <section id="skills">
-
       <h2>Skills</h2>
-
       <ul class="skills">
-        <li>HTML &amp; CSS</li>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Python</li>
-        <li>Git</li>
-        <li>UI design</li>
+        <li>HTML &amp; CSS</li><li>JavaScript</li><li>React</li><li>Python</li><li>Git</li><li>UI design</li>
       </ul>
-
     </section>
 
     <section id="contact">
-
       <h2>Contact</h2>
-
       <form id="form">
-
-        <label>
-          Name
-          <input name="name" required autocomplete="name">
-        </label>
-
-        <label>
-          Email
-          <input name="email" type="email" required autocomplete="email">
-        </label>
-
-        <label>
-          Message
-          <textarea name="message" rows="4" required></textarea>
-        </label>
-
+        <label>Name <input name="name" required autocomplete="name"></label>
+        <label>Email <input name="email" type="email" required autocomplete="email"></label>
+        <label>Message <textarea name="message" rows="4" required></textarea></label>
         <button type="submit">Send message</button>
-
         <div id="status" role="status"></div>
-
       </form>
-
-      <p>
-        Or email me at
-        <a href="mailto:you@example.com">you@example.com</a>.
-      </p>
-
+      <p>Or email me at <a href="mailto:you@example.com">you@example.com</a>.</p>
     </section>
-
   </main>
 
-  <footer>
-    © <span id="year"></span> Your Name
-  </footer>
-
+  <footer>© <span id="year"></span> Your Name</footer>
 </div>
 
 <script>
+document.getElementById('year').textContent = new Date().getFullYear();
 
-document.getElementById('year').textContent =
-  new Date().getFullYear();
-
-const root = document.documentElement;
-const btn = document.getElementById('theme');
-
-const dark = () => {
-  return root.dataset.theme
-    ? root.dataset.theme === 'dark'
-    : matchMedia('(prefers-color-scheme: dark)').matches;
-};
-
-const label = () => {
-  btn.textContent = dark() ? 'Light mode' : 'Dark mode';
-};
-
+const root = document.documentElement, btn = document.getElementById('theme');
+const dark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+const label = () => btn.textContent = dark() ? 'Light mode' : 'Dark mode';
 label();
-
-btn.addEventListener('click', () => {
-  root.dataset.theme = dark() ? 'light' : 'dark';
-  label();
-});
+btn.addEventListener('click', () => { root.dataset.theme = dark() ? 'light' : 'dark'; label(); });
 
 document.getElementById('form').addEventListener('submit', e => {
-
   e.preventDefault();
-
   const name = new FormData(e.target).get('name');
-
-  document.getElementById('status').textContent =
-    'Thanks, ' + name +
-    '. Your message is ready to send once a form service is connected.';
-
+  document.getElementById('status').textContent = 'Thanks, ' + name + '. Your message is ready to send once a form service is connected.';
   e.target.reset();
-
 });
-
 </script>
-
 </body>
 </html>
-
