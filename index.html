@@ -1,200 +1,115 @@
-<h1> Sahil </h1>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vrushank Ahire | DevOps Portfolio</title>
-  <meta name="description" content="Portfolio of Vrushank Ahire: CI/CD, Docker, Jenkins and AWS.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #EDEBFF; --ink: #111111; --white: #FFFFFF;
-      --yellow: #FFD84D; --blue: #3D5AFE; --pink: #FF7AB6; --mint: #7CE3C0;
-      --head: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-      --mono: "Space Mono", ui-monospace, Consolas, monospace;
-      --shadow: 6px 6px 0 var(--ink);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--head); font-weight: 500; font-size: 1.08rem; line-height: 1.6; }
-    a { color: inherit; }
-    :focus-visible { outline: 4px solid var(--blue); outline-offset: 3px; }
-    .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.4rem; }
-
-    nav { padding: 1.3rem 0; }
-    nav .wrap { display: flex; gap: .7rem; flex-wrap: wrap; align-items: center; }
-    nav .logo { font-weight: 700; font-size: 1.2rem; margin-right: auto; text-decoration: none; }
-    nav a.pill { text-decoration: none; padding: .35rem 1rem; border: 3px solid var(--ink); border-radius: 99px; background: var(--white); font-weight: 700; font-size: .95rem; }
-    nav a.pill:hover { background: var(--yellow); }
-
-    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 2.5rem; align-items: center; padding: 3rem 0 4rem; }
-    h1 { font-size: clamp(2.8rem, 8vw, 5.6rem); line-height: .98; letter-spacing: -.04em; margin: 0 0 1.4rem; }
-    h1 mark { background: var(--yellow); padding: 0 .15em; border: 3px solid var(--ink); display: inline-block; transform: rotate(-2deg); }
-    .lead { font-size: 1.25rem; max-width: 30rem; margin: 0 0 1.6rem; }
-    .stickers { display: flex; flex-wrap: wrap; gap: .8rem; }
-    .sticker { border: 3px solid var(--ink); border-radius: 10px; padding: .3rem .9rem; font-weight: 700; box-shadow: 4px 4px 0 var(--ink); }
-    .sticker:nth-child(1) { background: var(--pink); transform: rotate(-3deg); }
-    .sticker:nth-child(2) { background: var(--mint); transform: rotate(2deg); }
-    .sticker:nth-child(3) { background: var(--white); transform: rotate(-1deg); }
-
-    .term { background: var(--ink); color: #EDEBFF; border: 3px solid var(--ink); border-radius: 14px; box-shadow: var(--shadow); font-family: var(--mono); font-size: .95rem; overflow: hidden; }
-    .term .bar { background: var(--yellow); color: var(--ink); padding: .4rem .9rem; display: flex; gap: .45rem; align-items: center; font-weight: 700; border-bottom: 3px solid var(--ink); }
-    .term .bar i { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); background: var(--white); display: block; }
-    .term .bar span { margin-left: auto; }
-    .term .body { padding: 1.1rem 1.2rem; }
-    .term p { margin: 0 0 .35rem; }
-    .dim { color: #A9A4D6; }
-    .ok { color: var(--mint); }
-    .live { display: inline-flex; gap: .5rem; align-items: center; margin-top: .6rem; padding: .3rem .8rem; border-radius: 8px; background: var(--mint); color: var(--ink); font-weight: 700; }
-    .live::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ink); animation: pulse 1.6s infinite; }
-    @keyframes pulse { 50% { opacity: .25; } }
-
-    section { padding: 2.6rem 0; }
-    h2 { font-size: 2rem; margin: 0 0 1.4rem; letter-spacing: -.02em; }
-    h2 span { background: var(--pink); padding: 0 .35em; border: 3px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); display: inline-block; }
-    .card { background: var(--white); border: 3px solid var(--ink); border-radius: 14px; box-shadow: var(--shadow); padding: 1.5rem 1.6rem; }
-    .card p { margin: 0 0 .8rem; max-width: 42rem; }
-    .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
-    .card h3 { margin: 0 0 .5rem; font-size: 1.35rem; }
-    .chips { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem; }
-    .chips li { font-family: var(--mono); font-size: .82rem; padding: .1rem .7rem; border: 2px solid var(--ink); border-radius: 99px; background: var(--bg); }
-
-    .skill { display: flex; flex-wrap: wrap; gap: .8rem; }
-    .skill span { padding: .5rem 1.1rem; border: 3px solid var(--ink); border-radius: 12px; font-weight: 700; box-shadow: 4px 4px 0 var(--ink); transition: transform .12s; }
-    .skill span:hover { transform: translate(-2px, -2px) rotate(-1deg); }
-    .skill span:nth-child(4n+1) { background: var(--yellow); }
-    .skill span:nth-child(4n+2) { background: var(--mint); }
-    .skill span:nth-child(4n+3) { background: var(--pink); }
-    .skill span:nth-child(4n+4) { background: var(--white); }
-
-    .contact { background: var(--yellow); }
-    .btns { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1rem; align-items: center; }
-    .btn { font: inherit; font-weight: 700; cursor: pointer; text-decoration: none; padding: .65rem 1.3rem; border: 3px solid var(--ink); border-radius: 10px; background: var(--ink); color: var(--white); box-shadow: 4px 4px 0 var(--blue); }
-    .btn.alt { background: var(--white); color: var(--ink); }
-    .btn:hover { transform: translate(-2px, -2px); }
-    #copied { margin: .8rem 0 0; font-family: var(--mono); font-size: .9rem; min-height: 1.4em; }
-
-    footer { padding: 2rem 0 3rem; font-family: var(--mono); font-size: .88rem; }
-
-    @media (max-width: 760px) {
-      .hero { grid-template-columns: 1fr; padding-top: 1.5rem; }
-      .grid2 { grid-template-columns: 1fr; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
-      html { scroll-behavior: auto; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Name – Portfolio</title>
+<style>
+:root{
+  --bg:#f3f1ec; --ink:#1d2433; --muted:#5b6475; --line:#d6d2c8; --accent:#2b4acb; --card:#fbfaf7;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#161a24;--ink:#eceae4;--muted:#9aa2b3;--line:#2c3345;--accent:#8ea2ff;--card:#1d2230}
+}
+:root[data-theme="dark"]{--bg:#161a24;--ink:#eceae4;--muted:#9aa2b3;--line:#2c3345;--accent:#8ea2ff;--card:#1d2230}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Georgia,"Times New Roman",serif}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+header.nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;font-family:system-ui,sans-serif;font-size:15px}
+.nav nav a{margin-left:20px;color:var(--muted);text-decoration:none}
+.nav nav a:hover{color:var(--ink)}
+button.theme{font:inherit;background:none;border:1px solid var(--line);color:var(--ink);padding:4px 12px;border-radius:99px;cursor:pointer;margin-left:20px}
+.hero{padding:72px 0 56px}
+.hero h1{font-size:clamp(2.6rem,8vw,5rem);line-height:1.02;margin:0 0 24px;letter-spacing:-.02em;font-weight:700}
+.hero p{max-width:34em;color:var(--muted);font-size:1.15rem;margin:0 0 28px}
+.cta{display:inline-block;font-family:system-ui,sans-serif;background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:6px;text-decoration:none;font-weight:600}
+section{padding:48px 0;border-top:1px solid var(--line)}
+section h2{font:600 1.1rem system-ui,sans-serif;margin:0 0 28px;color:var(--muted)}
+.projects{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.project{background:var(--card);border:1px solid var(--line);padding:22px;border-radius:8px;display:flex;flex-direction:column}
+.project h3{margin:0 0 8px;font-size:1.2rem}
+.project p{margin:0 0 14px;color:var(--muted);font-size:.95rem;flex:1}
+.tags{font:13px system-ui,sans-serif;color:var(--muted)}
+.skills{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none;font-family:system-ui,sans-serif;font-size:15px}
+.skills li{border:1px solid var(--line);padding:6px 14px;border-radius:99px;background:var(--card)}
+form{display:grid;gap:14px;max-width:520px;font-family:system-ui,sans-serif}
+label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+input,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+form button{justify-self:start;font:600 15px system-ui,sans-serif;background:var(--accent);color:#fff;border:0;padding:12px 22px;border-radius:6px;cursor:pointer}
+#status{min-height:1.5em;font-family:system-ui,sans-serif;font-size:14px;color:var(--accent)}
+footer{padding:32px 0 48px;color:var(--muted);font:14px system-ui,sans-serif;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-  <nav>
-    <div class="wrap">
-      <a class="logo" href="#top">VA.</a>
-      <a class="pill" href="#about">About</a>
-      <a class="pill" href="#skills">Skills</a>
-      <a class="pill" href="#projects">Projects</a>
-      <a class="pill" href="#contact">Contact</a>
-    </div>
-  </nav>
+<div class="wrap">
+  <header class="nav">
+    <strong>Your Name</strong>
+    <nav>
+      <a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <button class="theme" id="theme" type="button">Dark mode</button>
+    </nav>
+  </header>
 
-  <main id="top" class="wrap">
+  <main>
     <div class="hero">
-      <div>
-        <h1>Hi, I'm <mark>Vrushank</mark> Ahire.</h1>
-        <p class="lead">I automate how code reaches the internet: push, build, ship, live.</p>
-        <div class="stickers"><span class="sticker">DevOps</span><span class="sticker">AWS</span><span class="sticker">Docker</span></div>
-      </div>
-      <div class="term" aria-label="Live deployment status">
-        <div class="bar"><i></i><i></i><i></i><span>deploy.log</span></div>
-        <div class="body">
-          <p><span class="dim">$</span> git push origin main</p>
-          <p class="dim">Jenkins: checkout, build, test</p>
-          <p class="dim">Docker: image built</p>
-          <p class="ok">Deploy: container replaced</p>
-          <div class="live"><span id="build">checking build</span></div>
-        </div>
-      </div>
+      <h1>I design and build useful things for the web.</h1>
+      <p>Hi, I’m Your Name, a web developer based in Pune. I turn ideas into fast, accessible websites and apps.</p>
+      <a class="cta" href="#contact">Get in touch</a>
     </div>
 
-    <section id="about">
-      <h2><span>About</span></h2>
-      <div class="card">
-        <!-- TODO: replace with your own story -->
-        <p>I am a developer focused on DevOps and cloud infrastructure. I like removing manual steps, so a change goes from my laptop to a live server without anyone logging in.</p>
-        <p>This page is deployed by the pipeline I built. The green badge above shows which Jenkins build is serving you right now.</p>
+    <section id="work">
+      <h2>Selected work</h2>
+      <div class="projects">
+        <article class="project"><h3>Project One</h3><p>A short description of what you built, who it was for, and the result.</p><div class="tags">HTML, CSS, JavaScript</div></article>
+        <article class="project"><h3>Project Two</h3><p>Describe the problem you solved and your role in solving it.</p><div class="tags">React, Node.js</div></article>
+        <article class="project"><h3>Project Three</h3><p>Mention a measurable outcome, such as faster load times or more sign-ups.</p><div class="tags">Python, Flask</div></article>
       </div>
     </section>
 
     <section id="skills">
-      <h2><span>Skills</span></h2>
-      <div class="skill">
-        <span>Jenkins</span><span>Docker</span><span>AWS EC2</span><span>GitHub Webhooks</span>
-        <span>Linux</span><span>Bash</span><span>Git</span><span>SSH</span>
-        <span>nginx</span><span>HTML / CSS / JS</span>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2><span>Projects</span></h2>
-      <div class="grid2">
-        <article class="card">
-          <h3>CI/CD pipeline on AWS</h3>
-          <p>A push to GitHub triggers Jenkins, which tests the code, builds a Docker image and deploys it to a second EC2 server over SSH.</p>
-          <ul class="chips"><li>Jenkins</li><li>Docker</li><li>EC2</li><li>GitHub</li></ul>
-          <!-- TODO: replace YOUR_GITHUB_USERNAME -->
-          <p style="margin-top:1rem"><a href="https://github.com/YOUR_GITHUB_USERNAME/cicd-jenkins-docker-ec2">View the repository</a></p>
-        </article>
-        <article class="card">
-          <h3>This portfolio</h3>
-          <p>One HTML file served by nginx in a container. Every push is built and deployed automatically.</p>
-          <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>nginx</li></ul>
-        </article>
-      </div>
+      <h2>Skills</h2>
+      <ul class="skills">
+        <li>HTML &amp; CSS</li><li>JavaScript</li><li>React</li><li>Python</li><li>Git</li><li>UI design</li>
+      </ul>
     </section>
 
     <section id="contact">
-      <div class="card contact">
-        <h2 style="margin-bottom:.6rem">Let's talk.</h2>
-        <p>Open to internships, junior DevOps roles and interesting projects.</p>
-        <div class="btns">
-          <!-- TODO: replace with your real email and profile links -->
-          <button class="btn" id="copy" type="button" data-email="you@example.com">Copy email</button>
-          <a class="btn alt" href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
-          <a class="btn alt" href="https://www.linkedin.com/in/YOUR_LINKEDIN">LinkedIn</a>
-        </div>
-        <p id="copied" role="status"></p>
-      </div>
+      <h2>Contact</h2>
+      <form id="form">
+        <label>Name <input name="name" required autocomplete="name"></label>
+        <label>Email <input name="email" type="email" required autocomplete="email"></label>
+        <label>Message <textarea name="message" rows="4" required></textarea></label>
+        <button type="submit">Send message</button>
+        <div id="status" role="status"></div>
+      </form>
+      <p>Or email me at <a href="mailto:you@example.com">you@example.com</a>.</p>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap">Deployed by Jenkins, <span id="foot-build">build unknown</span>. &copy; <span id="year"></span> Vrushank Ahire</div>
-  </footer>
+  <footer>© <span id="year"></span> Your Name</footer>
+</div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Which Jenkins build is live? (version.txt is written by the Dockerfile)
-    function showBuild(label) {
-      document.getElementById('build').textContent = label;
-      document.getElementById('foot-build').textContent = label;
-    }
-    fetch('version.txt', { cache: 'no-store' })
-      .then(function (r) { return r.ok ? r.text() : 'local'; })
-      .then(function (t) { t = t.trim(); showBuild(/^\d+$/.test(t) ? 'Live: build #' + t : 'local preview'); })
-      .catch(function () { showBuild('local preview'); });
+const root = document.documentElement, btn = document.getElementById('theme');
+const dark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+const label = () => btn.textContent = dark() ? 'Light mode' : 'Dark mode';
+label();
+btn.addEventListener('click', () => { root.dataset.theme = dark() ? 'light' : 'dark'; label(); });
 
-    // Copy email to clipboard
-    var btn = document.getElementById('copy');
-    btn.addEventListener('click', function () {
-      var email = btn.dataset.email, note = document.getElementById('copied');
-      (navigator.clipboard ? navigator.clipboard.writeText(email) : Promise.reject())
-        .then(function () { note.textContent = 'Copied ' + email; })
-        .catch(function () { note.textContent = 'Copy failed. My email is ' + email; });
-    });
-  </script>
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = new FormData(e.target).get('name');
+  document.getElementById('status').textContent = 'Thanks, ' + name + '. Your message is ready to send once a form service is connected.';
+  e.target.reset();
+});
+</script>
 </body>
 </html>
